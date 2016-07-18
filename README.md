@@ -1,23 +1,12 @@
-# LabCourse-group4-SS2016
-This is the public repository for the LabCourse 'Cloud Architectures and Management' taken in SS2016 with Johannes Wettinger.
+# WebShopServer
+Java server implementation for an example gRPC API WebShop Server.
 
-## chefmateclient (deprecated)
-The java (+maven) client implementation for Assignment 2 - Task 2.3 & 2.5
+## Start arguments
+* -p Port to listen to
 
-## chefmateserver
-The java (+maven) server implementation for Assignment 2 - Task 2.3 & 2.5.
+# WebShopClient
+Java client implementation accessing the gRPC API WebShop Server.
 
-See the architectural documentation [here](https://github.com/tfreundo/LabCourse-group4-SS2016/wiki/ChefMateServer-Architecture)
-
-## lambdaserver
-A gRPC Server for AWS lambda.
-
-## webshopclient
-The java (+maven) client implementation for Assignment 2 - Task 2.1 & 2.2.
-
-## webshopserver
-The java (+maven) server implementation for Assignment 2 - Task 2.1 & 2.2.
-
-
-
-
+## Start arguments
+* -h Hostname
+* -p Port

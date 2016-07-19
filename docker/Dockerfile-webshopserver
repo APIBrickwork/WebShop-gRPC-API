@@ -1,0 +1,33 @@
+# Container using ubuntu and java 8 hosting the ChefMateServer.
+# Build image with:  docker build -t Chefmate/chemateserver .
+
+FROM ubuntu
+MAINTAINER Tobias Freundorfer, https://github.com/tfreundo
+
+# Install java 8 and git
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y git && \
+    apt-get install -y  software-properties-common && \
+    add-apt-repository ppa:webupd8team/java -y && \
+    apt-get update && \
+    echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && \
+    apt-get install -y oracle-java8-installer && \
+    apt-get clean
+
+
+# Add user
+RUN useradd -ms /bin/bash webshop
+
+# Set user and working directory (everything below is executed as this user)
+USER webshop
+WORKDIR /home/webshop
+
+# Copy webshopserver to container
+COPY ./webshopserver-1.1.jar /home/webshop
+
+#Expose ports
+EXPOSE 8181
+
+# Run the server
+CMD ["java", "-jar", "webshopserver-1.1.jar", "-p", "8181"]
